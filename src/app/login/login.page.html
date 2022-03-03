@@ -1,0 +1,32 @@
+
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <form class="container2">
+
+      <ion-thumbnail class = "center" position="floating" >
+       <ion-img style="width: 230px; height: 230px;" src="../../assets/icon/denuncias.png" > </ion-img>
+      </ion-thumbnail>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="email_address" name="email" required></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+      </ion-item>
+  
+      <ion-row class="boton">
+        <ion-col>
+          <ion-button class="center-button" [disabled]="false" color="dark" expand="block" (click)="login()">Iniciar Sesión</ion-button>
+          <!--<a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>-->
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
+
+</ion-content>

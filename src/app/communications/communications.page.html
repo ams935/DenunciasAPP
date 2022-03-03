@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Comunicaciones Enviadas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="servicio.goTo('/login')">
+        <ion-icon name="log-out-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+ 
+
+  <div id="container">
+
+    <ion-searchbar class="search" animated = "true" debounce="1000" (ionChange)="load_communications()" [(ngModel)]="text" placeholder="Buscar..."></ion-searchbar>
+
+    <ion-card *ngFor="let communication of communications" (click) = "servicio.goTo('/communications/communication/' + communication.communication_id)">
+      <ion-card-header>
+          <table>
+            <tr>
+              <td class = "left"><ion-card-subtitle><b>Tipo:</b></ion-card-subtitle></td>
+              <td class = "right"><ion-card-subtitle>{{communication.type_communication}}</ion-card-subtitle></td>
+            </tr>
+            <tr>
+              <td class = "left"><ion-card-subtitle><b>Empleado:</b></ion-card-subtitle></td>
+              <td class = "right"><ion-card-subtitle>{{communication.recipient_first_name}} {{communication.recipient_last_name}}</ion-card-subtitle></td>
+            </tr>
+            <tr>
+              <td class = "left"><ion-card-subtitle><b>Departamento:</b></ion-card-subtitle></td>
+              <td class = "right"><ion-card-subtitle>{{communication.department}}</ion-card-subtitle></td>
+              <td class = "right"><ion-card-subtitle></ion-card-subtitle></td>
+            </tr>
+            <tr>
+              <td class = "left"><ion-card-subtitle><b>Anónimo:</b></ion-card-subtitle></td>
+              <td class = "right" *ngIf="communication.anonymous == true"><ion-card-subtitle>Sí</ion-card-subtitle></td>
+              <td class = "right" *ngIf="communication.anonymous == false"><ion-card-subtitle>No</ion-card-subtitle></td>
+            </tr>
+          </table>
+      </ion-card-header>
+    </ion-card>
+  
+    <ion-fab class="añadir" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="dark" (click) = "servicio.goTo('/communications/' + this.user_id + '/communication-add')">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </div>
+</ion-content>

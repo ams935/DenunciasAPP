@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/communications"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{type_communication}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <p><b>Empleado:</b> {{recipient_name}}</p>
+      <p><b>Departamento: </b>{{department}} </p>
+      <p><b>Anónimo:</b> {{anonymous_name}}</p> 
+      <div class="message">
+        <ion-text><b>Mensaje:</b> {{message}}</ion-text>
+      </div>
+    </ion-card-header>
+</ion-card>
+</ion-content>

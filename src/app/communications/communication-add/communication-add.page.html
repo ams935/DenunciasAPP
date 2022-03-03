@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/communications"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva Comunicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+ 
+  <!--
+  <ion-list>
+    <ion-item class="type" lines="full">
+      <ion-label position="stacked">Tipo de comunicación</ion-label>
+      <ion-input [(ngModel)]="type_id"></ion-input>
+    </ion-item>
+  
+    <ion-item class="employee" lines="full">
+      <ion-label position="stacked">Empleado</ion-label>
+
+    </ion-item>
+  
+    <ion-item class="department" lines="full">
+      <ion-label position="stacked">Departamento</ion-label>
+
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label>Comunicación anónima</ion-label>
+      <ion-toggle color="dark" [(ngModel)]="anonymous"></ion-toggle>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label position="stacked">Mensaje</ion-label>
+      <ion-textarea rows="15" class="just-text" [(ngModel)]="message"></ion-textarea>
+    </ion-item>
+  
+    <div class="button">
+      <ion-button class="center-button" expand="full" (click)="save_communication()" type="submit" color="dark" expand="block">Enviar</ion-button>
+    </div>
+
+  </ion-list>
+  -->
+  <ion-list>
+    <ion-item class="type" lines="full">
+      <ion-label>Tipo de comunicación</ion-label>
+      <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="type_id" > 
+        <ion-select-option *ngFor="let communication_type of communications_type" [value]="communication_type.communication_type_id">{{communication_type.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="employee" lines="full">
+      <ion-label>Empleado</ion-label>
+      <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="recipient_id" >
+        <ion-select-option *ngFor="let user of communications_users" [value]="user.user_id">{{user.first_name}} {{user.last_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="department" lines="full">
+      <ion-label>Departamento</ion-label>
+      <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="department_id" >
+        <ion-select-option *ngFor="let department of communications_departments" [value]="department.department_id">{{department.name}}</ion-select-option>
+      </ion-select> 
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Comunicación anónima</ion-label>
+      <ion-toggle color="dark" [(ngModel)]="anonymous"></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-textarea rows="15" class="just-text" [(ngModel)]="message"></ion-textarea>
+    </ion-item>
+
+    <div class="button">
+      <ion-button class="center-button" expand="full" (click)="save_communication()" type="submit" color="dark" expand="block">Enviar</ion-button>
+    </div>
+  </ion-list>
+
+</ion-content>
